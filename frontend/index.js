@@ -1,11 +1,14 @@
 const express = require("express");
 const app = express();
-app.use(express.json());
 const db = require("./models");
-// const authorRouter = require("./routes/authors");
 const bookRouter = require("./routes/books");
+const cors = require("cors");
+// const authorRouter = require("./routes/authors");
 
 // app.use("/authors", authorRouter);
+app.use(express.json());
+app.use(cors());
+
 app.use("/books", bookRouter);
 
 db.sequelize.sync().then(() => {
