@@ -20,6 +20,14 @@ function AllBooks() {
             <div>{value.published}</div>
             <div>{value.tags}</div>
             <div>{value.id}</div>
+            <div id="message-button-container">
+              <input
+                class="message-button"
+                id="submit"
+                type="submit"
+                value="Delete"
+              />
+            </div>
           </div>
         );
       })}
