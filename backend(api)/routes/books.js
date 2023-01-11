@@ -7,10 +7,30 @@ router.get("/", async (req, res) => {
   res.json(listOfBooks);
 });
 
+router.get("/:bookId", async (req, res) => {
+  const bookId = req.params.bookId;
+  const individualBook = await books.findAll({
+    where: {
+      id: bookId,
+    },
+  });
+  res.json(individualBook);
+});
+
 router.post("/", async (req, res) => {
   const book = req.body;
   await books.create(book);
   res.json(book);
+});
+
+router.delete("/:bookId", async (req, res) => {
+  console.log(req.params.bookId);
+  const bookId = req.params.bookId;
+  await books.destroy({
+    where: {
+      id: bookId,
+    },
+  });
 });
 
 module.exports = router;

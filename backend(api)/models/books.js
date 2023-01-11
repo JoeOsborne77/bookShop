@@ -12,11 +12,11 @@ module.exports = (sequelize, DataTypes) => {
     },
     tags: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     published: {
-      type: DataTypes.DATE,
-      allowNull: true,
+      type: DataTypes.DATEONLY,
+      allowNull: false,
     },
   });
 

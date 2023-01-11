@@ -10,24 +10,30 @@ function AllBooks() {
       setListOfBooks(response.data);
     });
   }, []);
+
+  const deleteBook = (bookID) => {
+    axios.delete(`http://localhost:3001/books/${bookID}`);
+  };
+
   return (
     <div className="App">
-      {listOfBooks.map((value, key) => {
+      {listOfBooks.map((book) => {
         return (
-          <div className="book">
-            <div> {value.title} </div>
-            <div>{value.author_id}</div>
-            <div>{value.published}</div>
-            <div>{value.tags}</div>
-            <div>{value.id}</div>
-            <div id="message-button-container">
-              <input
-                class="message-button"
-                id="submit"
-                type="submit"
-                value="Delete"
-              />
-            </div>
+          <div className="book" key={book.id}>
+            <div>{book.title}</div>
+            <div>{book.author_id}</div>
+            <div>{book.published}</div>
+            <div>{book.tags}</div>
+            <div>{book.id}</div>
+
+            <button
+              onClick={() => {
+                deleteBook(book.id);
+              }}
+            >
+              {" "}
+              Delete Book
+            </button>
           </div>
         );
       })}
