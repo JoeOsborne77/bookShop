@@ -30,4 +30,40 @@ router.delete("/:bookId", async (req, res) => {
   });
 });
 
+router.put("/title", async (req, res) => {
+  const bookObject = req.body;
+  await books.update(
+    { title: bookObject.title },
+    { where: { id: bookObject.id } }
+  );
+  res.json(bookObject.title);
+});
+
+router.put("/authorID", async (req, res) => {
+  const bookObject = req.body;
+  await books.update(
+    { author_id: bookObject.author_id },
+    { where: { id: bookObject.id } }
+  );
+  res.json(bookObject.author_id);
+});
+
+router.put("/published", async (req, res) => {
+  const bookObject = req.body;
+  await books.update(
+    { published: bookObject.published },
+    { where: { id: bookObject.id } }
+  );
+  res.json(bookObject.published);
+});
+
+router.put("/tags", async (req, res) => {
+  const bookObject = req.body;
+  await books.update(
+    { tags: bookObject.tags },
+    { where: { id: bookObject.id } }
+  );
+  res.json(bookObject.tags);
+});
+
 module.exports = router;
