@@ -9,11 +9,8 @@ router.get("/", async (req, res) => {
 
 router.get("/:bookId", async (req, res) => {
   const bookId = req.params.bookId;
-  const individualBook = await books.findAll({
-    where: {
-      id: bookId,
-    },
-  });
+  const individualBook = await books.findByPk(bookId);
+  console.log("individualBook:", individualBook);
   res.json(individualBook);
 });
 

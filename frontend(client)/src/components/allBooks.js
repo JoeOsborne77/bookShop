@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { useEffect, useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import IndividualBook from "../components/IndividualBook";
 
 function AllBooks() {
   const [listOfBooks, setListOfBooks] = useState([]);
@@ -20,7 +22,7 @@ function AllBooks() {
       {listOfBooks.map((book) => {
         return (
           <div className="book" key={book.id}>
-            <div>{book.title}</div>
+            <Link to={`/books/${book.id}`}>{book.title}</Link>
             <div>{book.author_id}</div>
             <div>{book.published}</div>
             <div>{book.tags}</div>
